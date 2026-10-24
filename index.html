@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dream Built Printables · Little Dreamers</title>
+<meta name="description" content="Free sensory and autism resources, dye-free food crafts, and printable tools for parents. Little Dreamers by Dream Built Digital.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#05030d;--card:rgba(16,9,30,.88);--ink:#fff6ef;--soft:#e3d6ee;--rose:#ff8ac9;--rose2:#ff5fb3;--pink:#ff5fb3;--purple:#a77bff;--teal:#5ee6e0;--gold:#ffc72c;--line:rgba(255,138,201,.55)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--sky);color:var(--ink);font:400 17px/1.6 Nunito,system-ui,sans-serif;min-height:100vh;
+background-image:radial-gradient(60% 40% at 15% 8%,rgba(167,123,255,.22),transparent 70%),radial-gradient(50% 35% at 90% 30%,rgba(255,95,179,.26),transparent 70%),radial-gradient(60% 40% at 30% 95%,rgba(94,230,224,.14),transparent 70%);background-attachment:fixed}
+body.calm{background-image:none;background:#0a0912}
+#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main,header,footer{position:relative;z-index:1}
+a{color:#ffb3da}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;color:#000;padding:10px 14px;border-radius:8px;z-index:9}
+.skip:focus{left:8px}
+header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:12px 16px;max-width:1100px;margin:0 auto}
+.brand{font:700 22px 'Cormorant Garamond',Georgia,serif;color:var(--gold);letter-spacing:.02em}
+.ctl{display:flex;gap:8px;flex-wrap:wrap}
+button,.btn{font:700 15px Nunito,sans-serif;min-height:44px;padding:8px 16px;border-radius:999px;border:1.5px solid var(--rose);background:rgba(16,9,30,.9);color:var(--ink);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+button:hover,.btn:hover{background:rgba(255,138,201,.22)}
+button[aria-pressed=true]{background:var(--rose);color:#2a1220}
+.t{border-color:var(--teal);color:#c9fbf8}
+.t:hover{background:rgba(94,230,224,.22)}
+button.t[aria-pressed=true]{background:var(--teal);color:#06262a}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#2a1a00}
+.btn.gold:hover{background:#ffd966}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.hero{text-align:center;padding:12px 0 28px}
+.hero img{width:min(78vw,360px);height:auto;border-radius:26px;box-shadow:0 0 34px rgba(255,95,179,.4);display:block;margin:0 auto 14px}
+h1,h2{text-shadow:0 0 18px rgba(255,95,179,.45);font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;line-height:1.15;margin:0 0 8px;color:var(--rose)}
+h1{font-size:clamp(34px,7vw,56px);color:var(--gold);text-shadow:0 0 18px rgba(255,95,179,.5)}
+h2{font-size:clamp(28px,5vw,38px)}
+.lead{max-width:560px;margin:0 auto 18px;color:var(--soft);font-size:18px}
+section{margin:0 0 44px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.badge{display:inline-block;font-weight:700;font-size:14px;padding:3px 12px;border-radius:999px;background:rgba(94,230,224,.18);color:var(--teal);border:1px solid var(--teal);margin-bottom:10px}
+.badge.gold{background:rgba(255,199,44,.16);color:var(--gold);border-color:var(--gold)}
+.note{color:var(--soft);max-width:68ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin-top:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.card img{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:top;background:#120a22;display:block}
+.card .b{padding:10px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{font:700 16px/1.3 Nunito,sans-serif;margin:0;color:var(--ink);flex:1}
+.card .row{display:flex;gap:6px}
+.card .row .btn,.card .row button{flex:1;min-height:44px;padding:6px 8px;font-size:14px}
+.calmzone{border-color:rgba(94,230,224,.55)}
+.trk summary{cursor:pointer;list-style:none;min-height:44px}
+.trk summary::-webkit-details-marker{display:none}
+.trk summary h2{margin:0}
+.trk .tap{display:block;color:var(--teal);font-weight:700;font-size:15px;margin-top:4px}
+.trk .tap::after{content:' +'}
+.trk[open] .tap{display:none}
+ul.rules{margin:10px 0 0;padding-left:20px;color:var(--soft)}
+ul.rules li{margin:4px 0}
+.follow{max-width:640px;margin:0 auto 22px}
+.soc{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+.soc .btn{min-width:150px}
+.getlink{text-align:center;padding:28px 18px;margin:0 auto 24px;border:1.5px solid var(--rose);border-radius:20px;background:linear-gradient(135deg,rgba(167,123,255,.25),rgba(255,95,179,.3));max-width:640px}
+.getlink .btn{background:var(--rose);color:#2a1220;border-color:var(--rose);font-size:17px;padding:10px 26px;margin-top:8px}
+.getlink .btn:hover{background:#ffb3da}
+footer{text-align:center;color:var(--soft);font-size:15px;padding:0 16px 120px}
+#player{position:fixed;left:10px;right:10px;bottom:10px;z-index:5;max-width:420px;margin:0 auto;display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(10,6,20,.94);border:1.5px solid var(--rose);border-radius:999px}
+#player .t{flex:1;min-width:0;font-size:13px;line-height:1.2;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#player button{min-height:44px;min-width:44px;padding:6px 12px;font-size:14px}
+#vo{width:70px;accent-color:var(--rose)}
+@media(max-width:380px){#vo{width:48px}}
+@media print{#sky,#player,header,.getlink{display:none}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<header>
+  <span class="brand">Dream Built Printables</span>
+  <div class="ctl" role="group" aria-label="Display settings">
+    <button id="mo" aria-pressed="true" title="Turn the moving stars and tap sparkles on or off">Sparkles: on</button>
+    <button id="ca" class="t" aria-pressed="false" title="Still sky, no motion, and music stays off">Calm mode</button>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <img src="logo.png" alt="Little Dreamers logo: a child on a golden crescent moon reaching for a star, with a teddy bear beside her">
+    <h1>Little Dreamers printables</h1>
+    <p class="lead">Calm, parent-friendly guides, food crafts, and tools you can print and keep. Tap the night sky for a little sparkle.</p>
+    <a class="btn gold" href="#guides">Dye-free guides</a> <a class="btn t" href="#tracker">Diet tracker</a>
+  </section>
+
+  <section id="guides" aria-labelledby="h-guide">
+    <span class="badge gold">Free for now</span>
+    <h2 id="h-guide">Dye-free parent guides</h2>
+    <p class="note">Start here: what artificial dyes are, what the research says, and realistic swaps. These guides are for general information and are not medical advice. Talk with your child’s pediatrician before making big diet changes.</p>
+    <div class="grid" id="g-guide"></div>
+  </section>
+
+  <section id="tracker" aria-labelledby="h-tool">
+    <details class="panel trk">
+      <summary><span class="badge gold">Opening soon</span> <h2 id="h-tool">Pantry and diet-change tracker</h2><span class="tap">Tap to learn more</span></summary>
+      <p class="note">An interactive tool for families changing their child’s diet, such as a 30-day dye-free trial. Build a pantry checklist, log foods, sleep, mood, and observations each day, and compare your baseline with what changes. Children are listed by nickname only, with no full names or diagnoses needed.</p>
+      <ul class="rules">
+        <li>3 completed assessments are free per account, then $1 for each additional new assessment.</li>
+        <li>One use means finishing one new assessment. Reopening, viewing, editing, saving, downloading, and printing never use one up.</li>
+        <li>Daily tracking entries are always free, and your saved records are never deleted if your free assessments run out.</li>
+        <li>You can export or delete your data at any time. It is never sold or used for ads.</li>
+      </ul>
+        </details>
+  </section>
+
+  <section id="free" aria-labelledby="h-free">
+    <div class="panel calmzone">
+      <span class="badge">Always free</span>
+      <h2 id="h-free">Autism and sensory resources</h2>
+      <p class="note">Every autism and sensory resource on this page is free to view, download, and print, now and always. Nothing here ever uses up a free-use allowance. These guides support families and are not medical advice.</p>
+      <div class="grid" id="g-free"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-food">
+    <span class="badge gold">Free for now</span>
+    <h2 id="h-food">Dye-free food crafts</h2>
+    <p class="note">Snacks and crafts made without artificial dyes. Always read the label on the exact product you buy, because recipes change. Offer foods gently and let children lead.</p>
+    <div class="grid" id="g-food"></div>
+  </section>
+
+  <section aria-labelledby="h-act">
+    <h2 id="h-act">Sensory fun activities</h2>
+    <p class="note">Simple crafts for hands-on play. Adults supervise young children, and no child is ever pushed to touch or join in.</p>
+    <div class="grid" id="g-act"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="panel follow">
+    <h2>Follow us on our social media platforms</h2>
+    <p class="note" style="margin:0 auto">Come say hi, share your wins, and be the first to see new printables and tools.</p>
+    <div class="soc">
+      <a class="btn" href="https://www.tiktok.com/@yourfav_cc444" target="_blank" rel="noopener" aria-label="TikTok, yourfav_cc444, opens in a new tab">TikTok</a>
+      <a class="btn t" href="https://www.instagram.com/littledreamers444" target="_blank" rel="noopener" aria-label="Instagram, littledreamers444, opens in a new tab">Instagram</a>
+      <a class="btn" href="https://www.facebook.com/share/1GpJQPvuiD/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook page, opens in a new tab">Facebook</a>
+      <a class="btn t" href="https://dreamer.dreamlinks.online/" target="_blank" rel="noopener" aria-label="Dreamer’s Dream Link, opens in a new tab">Dream Link</a>
+      <a class="btn" href="https://pin.it/xSisljPAn" target="_blank" rel="noopener" aria-label="Pinterest board, opens in a new tab">Pinterest</a>
+    </div>
+  </div>
+  <div class="getlink">
+    <h2>Want a Dream Link of your own?</h2>
+    <p class="note" style="margin:0 auto">This page was made with Dream Links. Get a beautiful link-in-bio page for your business, brand, or dream.</p>
+    <a id="get-link" class="btn" href="https://dreamlinks.online" target="_blank" rel="noopener">Get your own Dream Link</a>
+  </div>
+  <p>Little Dreamers · Created by Dream Built Digital ♡</p>
+</footer>
+
+<div id="player" role="group" aria-label="Music player">
+  <button id="pp" aria-label="Play Made of Stars">Play</button>
+  <span class="t">Made of Stars · Dreamer</span>
+  <button id="mu" class="t" aria-pressed="false" aria-label="Mute">Mute</button>
+  <input id="vo" type="range" min="0" max="1" step="0.05" value="0.6" aria-label="Volume">
+  <audio id="au" src="made-of-stars.mp3" preload="none"></audio>
+</div>
+
+<noscript><p class="wrap">Please turn on JavaScript to see the resources.</p></noscript>
+
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)},S=window.sessionStorage;
+function get(k){try{return S.getItem(k)}catch(e){return null}}
+function set(k,v){try{S.setItem(k,v)}catch(e){}}
+
+/* ---------- Resources ---------- */
+var R={
+free:[["sleep-help-autism","Sleep Help for Kids with Autism"],["bedtime-that-works","Bedtime That Finally Works"],["sensory-decoding","Sensory Decoding: Why Sleep Is Hard"],["sensory-seeking-sleep","Why Sensory-Seeking Kids Need Input Before Sleep"]],
+act:[["glow-lifesavers","DIY Glow-in-the-Dark Lifesavers"],["sun-catcher","DIY Sun Catcher"],["kinetic-sand","DIY Kinetic Sand"]],
+guide:[["parent-guide-removing-dyes","A Parent’s Guide to Removing Artificial Food Dyes"],["benefits-removing-dyes","The Benefits of Removing Artificial Food Dyes"]],
+food:[["healthy-candy-bracelets","Healthy Candy Bracelets"],["frozen-banana-ghosts","Frozen Banana Ghosts"],["frozen-yogurt-grapes","Frozen Yogurt-Coated Grapes"],["reindeer-banana-snacks","Reindeer Banana Snacks"],["yogurt-fruit-popsicles","Yogurt and Fresh Fruit Popsicles"],["banana-yogurt-bites","Frozen Banana and Yogurt Bites"]]
+};
+function card(r){
+ var src="images/"+r[0]+".png",d=document.createElement("div");d.className="card";
+ d.innerHTML='<img loading="lazy" src="'+src+'" alt="Printable: '+r[1]+'"><div class="b"><h3>'+r[1]+'</h3><div class="row"><a class="btn t" href="'+src+'" download="'+r[0]+'.png">Download</a><button type="button" data-p="'+src+'">Print</button></div></div>';
+ return d}
+Object.keys(R).forEach(function(k){var g=$("#g-"+k);R[k].forEach(function(r){g.appendChild(card(r))})});
+document.addEventListener("click",function(e){var b=e.target.closest("button[data-p]");if(!b)return;
+ var u=new URL(b.getAttribute("data-p"),location.href).href,f=document.createElement("iframe");
+ f.style.cssText="position:fixed;width:0;height:0;border:0";
+ f.srcdoc='<body style="margin:0"><img src="'+u+'" style="width:100%;max-height:100vh;object-fit:contain" onload="setTimeout(function(){print()},200)"></body>';
+ document.body.appendChild(f);setTimeout(function(){f.remove()},60000)});
+
+/* ---------- Motion + calm settings ---------- */
+var mq=window.matchMedia("(prefers-reduced-motion: reduce)");
+var motion=get("db_motion")===null?!mq.matches:get("db_motion")==="1";
+var calm=get("db_calm")==="1";
+var mo=$("#mo"),ca=$("#ca"),au=$("#au");
+function ui(){mo.setAttribute("aria-pressed",motion);mo.textContent="Sparkles: "+(motion?"on":"off");ca.setAttribute("aria-pressed",calm);document.body.classList.toggle("calm",calm)}
+mo.onclick=function(){motion=!motion;set("db_motion",motion?"1":"0");ui();sync()};
+ca.onclick=function(){calm=!calm;set("db_calm",calm?"1":"0");if(calm){au.pause()}ui();sync()};
+if(mq.addEventListener)mq.addEventListener("change",function(e){if(e.matches){motion=false;ui();sync()}});
+
+/* ---------- Starfield ---------- */
+var cv=$("#sky"),cx=cv.getContext("2d"),W=0,H=0,dpr=1,stars=[],bursts=[],raf=0,last=0,running=false;
+var COL=["#ffffff","#ff7ac8","#ff5fb3","#ff7ac8","#a77bff","#5ee6e0","#6aa8ff","#ffc72c","#ffc72c"];
+function size(){dpr=Math.min(window.devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);
+ var n=Math.min(260,Math.round(W*H/4200));stars=[];
+ for(var i=0;i<n;i++){var big=Math.random()<.07;stars.push({x:Math.random()*W,y:Math.random()*H,r:big?1.8+Math.random()*1.4:.4+Math.random()*1.1,c:COL[(Math.random()*COL.length)|0],a:.35+Math.random()*.6,s:.0004+Math.random()*.0008,p:Math.random()*6.28,big:big})}
+ sync()}
+function spark(x,y,r,col,al){cx.globalAlpha=al;cx.fillStyle=col;cx.beginPath();
+ cx.moveTo(x,y-r);cx.quadraticCurveTo(x,y,x+r,y);cx.quadraticCurveTo(x,y,x,y+r);cx.quadraticCurveTo(x,y,x-r,y);cx.quadraticCurveTo(x,y,x,y-r);cx.fill()}
+function dot(x,y,r,col,al){cx.globalAlpha=al;cx.fillStyle=col;cx.beginPath();cx.arc(x,y,r,0,6.2832);cx.fill()}
+function paint(t,live){
+ cx.clearRect(0,0,W,H);var k=calm?.45:1;
+ for(var i=0;i<stars.length;i++){var s=stars[i];if(calm&&i%5===0)continue;
+  var a=s.a*k;if(live)a=Math.max(.12,a+.22*Math.sin(t*s.s+s.p))*k;
+  if(s.big){dot(s.x,s.y,s.r*3.2,s.c,a*.14);spark(s.x,s.y,s.r*4,s.c,a)}dot(s.x,s.y,s.r,s.c,a)}
+ if(live){var now=performance.now();
+  for(var j=bursts.length-1;j>=0;j--){var b=bursts[j],p=(now-b.t0)/1100;if(p>=1){bursts.splice(j,1);continue}
+   var e=1-Math.pow(1-p,3);
+   for(var q=0;q<b.ps.length;q++){var o=b.ps[q];spark(b.x+Math.cos(o.an)*o.d*e,b.y+Math.sin(o.an)*o.d*e+p*14,o.r*(1-p*.35),o.c,(1-p)*(.8+.2*Math.sin(p*12+o.ph)))}}}
+ cx.globalAlpha=1}
+function frame(t){if(!running)return;if(t-last>33){last=t;paint(t,true)}raf=requestAnimationFrame(frame)}
+function sync(){cancelAnimationFrame(raf);running=motion&&!calm&&!document.hidden;if(running){raf=requestAnimationFrame(frame)}else{bursts.length=0;paint(0,false)}}
+document.addEventListener("visibilitychange",sync);
+var rz;addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(size,150)});
+
+/* ---------- Tap starburst (background only) ---------- */
+document.addEventListener("pointerdown",function(e){
+ if(!running||e.target.closest("a,button,input,select,textarea,label,summary,.card,.panel,.getlink,#player,header"))return;
+ if(bursts.length>5)bursts.shift();
+ var ps=[];for(var i=0;i<16;i++)ps.push({an:Math.random()*6.28,d:28+Math.random()*70,r:2.5+Math.random()*4.5,c:COL[(Math.random()*COL.length)|0],ph:Math.random()*6});
+ bursts.push({x:e.clientX,y:e.clientY,t0:performance.now(),ps:ps})},{passive:true});
+
+/* ---------- Music (never autoplays) ---------- */
+var pp=$("#pp"),mu=$("#mu"),vo=$("#vo"),v=get("db_vol");
+au.volume=v===null?.6:+v;vo.value=au.volume;au.muted=get("db_mute")==="1";
+function mui(){pp.textContent=au.paused?"Play":"Pause";pp.setAttribute("aria-label",au.paused?"Play Made of Stars":"Pause Made of Stars");mu.setAttribute("aria-pressed",au.muted);mu.textContent=au.muted?"Unmute":"Mute";mu.setAttribute("aria-label",au.muted?"Unmute":"Mute")}
+pp.onclick=function(){if(au.paused){au.play().catch(function(){pp.textContent="Retry"})}else au.pause()};
+mu.onclick=function(){au.muted=!au.muted;set("db_mute",au.muted?"1":"0");mui()};
+vo.oninput=function(){au.volume=+vo.value;au.muted=false;set("db_vol",vo.value);set("db_mute","0");mui()};
+au.addEventListener("play",mui);au.addEventListener("pause",mui);au.addEventListener("ended",mui);
+au.addEventListener("loadedmetadata",function(){var t=+get("db_time");if(t&&t<au.duration-2)au.currentTime=t});
+au.addEventListener("timeupdate",function(){set("db_time",String(Math.floor(au.currentTime)))});
+au.addEventListener("error",function(){pp.textContent="No file";pp.disabled=true});
+mui();ui();size();
+})();
+</script>
+</body>
+</html>
