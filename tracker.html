@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diet-Change Tracker · Little Dreamers</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#fff6ef;--soft:#e3d6ee;--pink:#ff8ac9;--pink2:#ff5fb3;--gold:#ffc72c;--teal:#5ee6e0;--card:rgba(16,9,30,.92);--line:rgba(255,138,201,.55)}
+*{box-sizing:border-box}
+body{margin:0;padding:14px 14px 60px;color:var(--ink);font:400 17px/1.55 Nunito,system-ui,sans-serif;background:#05030d radial-gradient(60% 40% at 15% 5%,rgba(167,123,255,.22),transparent 70%),radial-gradient(50% 35% at 90% 25%,rgba(255,95,179,.24),transparent 70%) fixed}
+.w{max-width:760px;margin:0 auto}
+a{color:#ffb3da}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+h1,h2{font-family:'Cormorant Garamond',Georgia,serif;margin:0 0 8px;line-height:1.15}
+h1{font-size:clamp(32px,7vw,46px);color:var(--gold);text-shadow:0 0 18px rgba(255,95,179,.5)}
+h2{font-size:28px;color:var(--pink)}
+.p{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:14px 0}
+.n{color:var(--soft);font-size:15px}
+button,.b{font:700 15px Nunito,sans-serif;min-height:44px;padding:8px 16px;border-radius:999px;border:1.5px solid var(--pink);background:rgba(16,9,30,.9);color:var(--ink);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+button.t,.b.t{border-color:var(--teal);color:#c9fbf8}
+button[aria-pressed=true]{background:var(--pink);color:#2a1220}
+button.t[aria-pressed=true]{background:var(--teal);color:#06262a}
+button.g{background:var(--gold);border-color:var(--gold);color:#2a1a00}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+select,input,textarea{font:inherit;color:var(--ink);background:#120a22;border:1.5px solid var(--line);border-radius:12px;padding:10px;min-height:44px;max-width:100%}
+textarea{width:100%;min-height:80px}
+.it{border-top:1px solid rgba(255,138,201,.25);padding:12px 0}
+.it:first-child{border-top:0}
+.r5{display:flex;gap:6px}
+.r5 button{min-width:44px;padding:6px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{padding:8px 6px;border-bottom:1px solid rgba(255,138,201,.25);text-align:left}
+#toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--teal);color:#06262a;font-weight:700;padding:10px 18px;border-radius:999px;display:none;z-index:9}
+#report{display:none}
+@media print{
+ body{background:#fff;color:#000;padding:0}
+ body>*:not(#report){display:none!important}
+ #report{display:block;font:14px/1.5 Georgia,serif;color:#000}
+ #report h1,#report h2{color:#000;text-shadow:none}
+ #report table{width:100%}#report th,#report td{border:1px solid #999;padding:5px}
+}
+</style>
+</head>
+<body>
+<div class="w">
+<a class="b t" href="index.html#tracker">← Back to Little Dreamers</a>
+<h1>Diet-Change Tracker</h1>
+<p class="n">A calm place to review your pantry and log how your child is doing during a diet change, like a 30-day dye-free trial. This is an informal tool, not a diagnosis or medical advice. Talk with your child’s pediatrician before making big diet changes, and never stop prescribed medicine.</p>
+
+<div class="p">
+ <strong>Privacy:</strong> <span class="n">Use a nickname only. No full names or diagnoses are needed. Everything is saved <b>only on this device, in this browser</b>. It is never sent anywhere, sold, or used for ads. Clearing your browser data or switching phones will erase it, so use <b>Export</b> to keep a copy. Accounts for saving across devices are coming.</span>
+</div>
+
+<div class="p">
+ <label for="pr"><strong>Child’s nickname</strong></label>
+ <div class="row" style="margin-top:6px">
+  <select id="pr" aria-label="Choose a child"></select>
+  <button type="button" id="add" class="t">Add a child</button>
+ </div>
+</div>
+
+<div class="row" id="tabs" role="group" aria-label="Tracker sections">
+ <button type="button" data-t="pan" aria-pressed="true">Pantry</button>
+ <button type="button" data-t="log" class="t" aria-pressed="false">Daily log</button>
+ <button type="button" data-t="prg" aria-pressed="false">Progress</button>
+ <button type="button" data-t="exp" class="t" aria-pressed="false">Save and export</button>
+</div>
+
+<section id="pan" class="p" aria-labelledby="h1a">
+ <h2 id="h1a">Pantry checklist</h2>
+ <p class="n">Go through each group, choose what you found, and add a note if you like. <b id="cnt">0 of 9 reviewed</b></p>
+ <div id="pl"></div>
+</section>
+
+<section id="log" class="p" hidden aria-labelledby="h2a">
+ <h2 id="h2a">Daily log</h2>
+ <p class="n">Rate each from 0 (none) to 4 (very high). Compare days across the trial, not just one afternoon.</p>
+ <div class="row"><label>Date <input type="date" id="dt"></label>
+ <label>Phase <select id="ph"><option value="Baseline">Baseline (usual diet)</option><option value="Dye-free">Dye-free</option></select></label></div>
+ <div id="rt"></div>
+ <label for="nt"><b>Notes</b> <span class="n">(foods, sleep, illness, medicine, unusual events)</span></label>
+ <textarea id="nt"></textarea>
+ <div class="row" style="margin-top:10px"><button type="button" id="sv" class="g">Save entry</button></div>
+ <h2 style="margin-top:18px">Saved entries</h2>
+ <div id="en"></div>
+</section>
+
+<section id="prg" class="p" hidden aria-labelledby="h3a">
+ <h2 id="h3a">Progress</h2>
+ <div id="pg"></div>
+</section>
+
+<section id="exp" class="p" hidden aria-labelledby="h4a">
+ <h2 id="h4a">Save and export</h2>
+ <p class="n">Your entries save automatically. These buttons keep copies or make a printed report for a binder or appointment. Saving, printing, and exporting are always free.</p>
+ <div class="row">
+  <button type="button" id="sp" class="g">Save progress</button>
+  <button type="button" id="pr1">Print results</button>
+  <button type="button" id="pdf" class="t">Download PDF</button>
+  <button type="button" id="csv">Export tracking history</button>
+  <button type="button" id="js" class="t">Export all data (backup)</button>
+ </div>
+ <p class="n">To make a PDF, choose <b>Download PDF</b>, then in the print window pick <b>Save as PDF</b>. On iPhone, pinch the preview to zoom, then tap Share and Save to Files.</p>
+ <h2 style="margin-top:14px">Delete</h2>
+ <div class="row">
+  <button type="button" id="dc" class="t">Delete this child’s data</button>
+  <button type="button" id="da">Delete everything</button>
+ </div>
+</section>
+</div>
+<div id="report"></div>
+<div id="toast" role="status"></div>
+
+<script>
+(function(){
+var K="ld_tracker_v1",S,$=function(s){return document.querySelector(s)};
+var CATS=["Juice boxes, fruit punch, sports drinks","Breakfast cereals and flavored oatmeal","Candy, gummies and fruit snacks","Chips and cheese-flavored crackers","Yogurt, pudding and gelatin","Frosting, cake mixes and sprinkles","Popsicles and frozen desserts","Vitamins, gummies and medicines","Sauces, pickles and packaged meals"];
+var STAT=[["","Not reviewed"],["dyes","Has dyes"],["swap","Dye-free swap found"],["free","Already dye-free"]];
+var RAT=["Hyperactivity / restlessness","Impulsivity","Irritability / distress","Difficulty settling for sleep"];
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function load(){try{S=JSON.parse(localStorage.getItem(K))}catch(e){S=null}if(!S||!S.p)S={p:{},cur:""}}
+function save(){try{localStorage.setItem(K,JSON.stringify(S));return true}catch(e){alert("This browser would not save. Private browsing can block saving. Please use Export to keep a copy.");return false}}
+function toast(m){var t=$("#toast");t.textContent=m;t.style.display="block";clearTimeout(toast.h);toast.h=setTimeout(function(){t.style.display="none"},2200)}
+function P(){return S.p[S.cur]}
+function today(){var d=new Date();return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
+
+function profiles(){var s=$("#pr"),h="";Object.keys(S.p).forEach(function(k){h+='<option value="'+esc(k)+'"'+(k===S.cur?" selected":"")+'>'+esc(S.p[k].name)+'</option>'});
+ s.innerHTML=h||'<option value="">Add a child to begin</option>';all()}
+function all(){var has=!!P();["pan","log","prg","exp"].forEach(function(i){});pantry();logUI();prog()}
+
+function pantry(){var p=P(),el=$("#pl"),h="",n=0;if(!p){el.innerHTML='<p class="n">Add a nickname above to start.</p>';$("#cnt").textContent="0 of 9 reviewed";return}
+ CATS.forEach(function(c,i){var d=p.pan[i]||{s:"",n:""};if(d.s)n++;
+  h+='<div class="it"><label for="s'+i+'"><b>'+esc(c)+'</b></label><div class="row"><select id="s'+i+'" data-i="'+i+'">'+STAT.map(function(x){return'<option value="'+x[0]+'"'+(d.s===x[0]?" selected":"")+'>'+x[1]+'</option>'}).join("")+'</select><input data-n="'+i+'" value="'+esc(d.n)+'" placeholder="Note (brand, swap idea)" aria-label="Note for '+esc(c)+'" style="flex:1;min-width:160px"></div></div>'});
+ el.innerHTML=h;$("#cnt").textContent=n+" of 9 reviewed"}
+$("#pl").addEventListener("change",function(e){var p=P();if(!p)return;var i=e.target.getAttribute("data-i");if(i!==null){(p.pan[i]=p.pan[i]||{s:"",n:""}).s=e.target.value;save();pantry()}});
+$("#pl").addEventListener("input",function(e){var p=P(),i=e.target.getAttribute("data-n");if(p&&i!==null){(p.pan[i]=p.pan[i]||{s:"",n:""}).n=e.target.value;save()}});
+
+var cur=[null,null,null,null];
+function rates(){var h="";RAT.forEach(function(r,i){h+='<div class="it"><b>'+r+'</b><div class="r5" role="group" aria-label="'+r+'">';for(var v=0;v<5;v++)h+='<button type="button" data-r="'+i+'" data-v="'+v+'" class="'+(v%2?"t":"")+'" aria-pressed="'+(cur[i]===v)+'">'+v+'</button>';h+='</div></div>'});$("#rt").innerHTML=h}
+$("#rt").addEventListener("click",function(e){var b=e.target.closest("button[data-r]");if(!b)return;cur[+b.getAttribute("data-r")]=+b.getAttribute("data-v");rates()});
+function fill(){var p=P(),d=$("#dt").value,e=p&&p.log[d];if(e){cur=e.r.slice();$("#nt").value=e.n||"";$("#ph").value=e.ph}else{cur=[null,null,null,null];$("#nt").value=""}rates()}
+$("#dt").addEventListener("change",fill);
+function logUI(){var p=P();if(!$("#dt").value)$("#dt").value=today();fill();var el=$("#en");if(!p){el.innerHTML="";return}
+ var ds=Object.keys(p.log).sort().reverse(),h="";if(!ds.length)h='<p class="n">No entries yet.</p>';
+ ds.forEach(function(d){var e=p.log[d];h+='<div class="it"><div class="row"><b>'+d+'</b> <span class="n">'+e.ph+' · scores '+e.r.join(" / ")+'</span></div>'+(e.n?'<div class="n">'+esc(e.n)+'</div>':"")+'<div class="row" style="margin-top:6px"><button type="button" data-ed="'+d+'" class="t">Edit</button><button type="button" data-rm="'+d+'">Delete</button></div></div>'});
+ el.innerHTML=h}
+$("#sv").onclick=function(){var p=P();if(!p){alert("Add a child first.");return}if(cur.indexOf(null)>-1){alert("Please choose 0 to 4 for all four items.");return}
+ p.log[$("#dt").value]={ph:$("#ph").value,r:cur.slice(),n:$("#nt").value};if(save()){toast("Entry saved on this device");logUI();prog()}};
+$("#en").addEventListener("click",function(e){var p=P(),b=e.target.closest("button");if(!b||!p)return;
+ if(b.getAttribute("data-ed")){$("#dt").value=b.getAttribute("data-ed");fill();window.scrollTo({top:$("#log").offsetTop,behavior:"smooth"})}
+ else if(b.getAttribute("data-rm")&&confirm("Delete this entry?")){delete p.log[b.getAttribute("data-rm")];save();logUI();prog()}});
+
+function avg(a){return a.length?a.reduce(function(x,y){return x+y},0)/a.length:null}
+function stats(p){var B=[],D=[];Object.keys(p.log).forEach(function(d){(p.log[d].ph==="Baseline"?B:D).push(p.log[d].r)});
+ return RAT.map(function(r,i){var b=avg(B.map(function(x){return x[i]})),d=avg(D.map(function(x){return x[i]}));return{r:r,b:b,d:d}})}
+function f(x){return x==null?"–":x.toFixed(1)}
+function statTable(p){var s=stats(p),h='<table><tr><th>Rating (0–4)</th><th>Baseline avg</th><th>Dye-free avg</th><th>Change</th></tr>';
+ s.forEach(function(x){h+='<tr><td>'+x.r+'</td><td>'+f(x.b)+'</td><td>'+f(x.d)+'</td><td>'+(x.b!=null&&x.d!=null?(x.d-x.b>0?"+":"")+(x.d-x.b).toFixed(1):"–")+'</td></tr>'});return h+'</table>'}
+function chart(p){var ds=Object.keys(p.log).sort();if(ds.length<2)return'<p class="n">Add at least two entries to see your chart.</p>';
+ var W=320,H=150,x=function(i){return 20+i*(W-30)/(ds.length-1)},y=function(v){return H-20-v*(H-40)/16},pts=ds.map(function(d,i){return x(i)+","+y(p.log[d].r.reduce(function(a,b){return a+b},0))}).join(" ");
+ var dots=ds.map(function(d,i){var e=p.log[d];return'<circle cx="'+x(i)+'" cy="'+y(e.r.reduce(function(a,b){return a+b},0))+'" r="5" fill="'+(e.ph==="Baseline"?"#ff8ac9":"#5ee6e0")+'"/>'}).join("");
+ return'<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="Chart of total daily scores over time"><line x1="20" y1="'+(H-20)+'" x2="'+W+'" y2="'+(H-20)+'" stroke="#888"/><polyline points="'+pts+'" fill="none" stroke="#ffc72c" stroke-width="2"/>'+dots+'</svg><p class="n">Total of the four ratings per day (0 to 16). Pink dots are baseline days, teal dots are dye-free days. Lower is calmer.</p>'}
+function prog(){var p=P(),el=$("#pg");if(!p){el.innerHTML='<p class="n">Add a child to begin.</p>';return}
+ el.innerHTML='<h3 style="margin:0 0 6px">Baseline vs dye-free</h3>'+statTable(p)+'<h3 style="margin:16px 0 6px">Over time</h3>'+chart(p)+'<p class="n">Averages can’t show cause and effect. Many things affect behavior, like sleep, illness, and routine. Share these results with your child’s clinician.</p>'}
+
+function dl(name,type,txt){var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([txt],{type:type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500)}
+function report(){var p=P();if(!p)return false;var h='<h1>Little Dreamers Diet-Change Report</h1><p>Child: <b>'+esc(p.name)+'</b> · Printed '+today()+'</p><h2>Pantry review</h2><table><tr><th>Group</th><th>Status</th><th>Note</th></tr>';
+ CATS.forEach(function(c,i){var d=p.pan[i]||{s:"",n:""};h+='<tr><td>'+esc(c)+'</td><td>'+STAT.filter(function(x){return x[0]===d.s})[0][1]+'</td><td>'+esc(d.n)+'</td></tr>'});
+ h+='</table><h2>Baseline vs dye-free</h2>'+statTable(p)+'<h2>Daily log</h2><table><tr><th>Date</th><th>Phase</th><th>Scores</th><th>Notes</th></tr>';
+ Object.keys(p.log).sort().forEach(function(d){var e=p.log[d];h+='<tr><td>'+d+'</td><td>'+e.ph+'</td><td>'+e.r.join(" / ")+'</td><td>'+esc(e.n)+'</td></tr>'});
+ h+='</table><p style="font-size:12px">Ratings: Hyperactivity, Impulsivity, Irritability, Sleep difficulty, each 0 (none) to 4 (very high). Informal tracking, not a diagnosis. Little Dreamers by Dream Built Digital.</p>';
+ $("#report").innerHTML=h;return true}
+function pr(){if(!report()){alert("Add a child first.");return}window.print()}
+$("#pr1").onclick=pr;$("#pdf").onclick=pr;
+$("#sp").onclick=function(){if(save())toast("Progress saved on this device")};
+$("#csv").onclick=function(){var p=P();if(!p){alert("Add a child first.");return}var q=function(s){return'"'+String(s).replace(/"/g,'""')+'"'},rows=[["Date","Phase"].concat(RAT).concat(["Notes"]).map(q).join(",")];
+ Object.keys(p.log).sort().forEach(function(d){var e=p.log[d];rows.push([d,e.ph].concat(e.r).concat([e.n||""]).map(q).join(","))});dl("tracking-history-"+p.name.replace(/\W+/g,"-")+".csv","text/csv",rows.join("\n"))};
+$("#js").onclick=function(){dl("little-dreamers-backup.json","application/json",JSON.stringify(S,null,1))};
+$("#dc").onclick=function(){var p=P();if(p&&confirm("Delete all saved information for "+p.name+"? This cannot be undone.")){delete S.p[S.cur];S.cur=Object.keys(S.p)[0]||"";save();profiles();toast("Deleted")}};
+$("#da").onclick=function(){if(confirm("Delete ALL saved information on this device? This cannot be undone.")){S={p:{},cur:""};try{localStorage.removeItem(K)}catch(e){}profiles();toast("Everything deleted")}};
+$("#add").onclick=function(){var n=(prompt("Nickname for your child (no full names needed):")||"").trim();if(!n)return;var id="c"+Date.now();S.p[id]={name:n.slice(0,30),pan:{},log:{}};S.cur=id;save();profiles()};
+$("#pr").onchange=function(){S.cur=this.value;save();all()};
+$("#tabs").addEventListener("click",function(e){var b=e.target.closest("button[data-t]");if(!b)return;["pan","log","prg","exp"].forEach(function(i){$("#"+i).hidden=(i!==b.getAttribute("data-t"))});
+ document.querySelectorAll("#tabs button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});if(b.getAttribute("data-t")==="prg")prog()});
+load();if(!S.cur||!S.p[S.cur])S.cur=Object.keys(S.p)[0]||"";profiles();
+})();
+</script>
+</body>
+</html>
